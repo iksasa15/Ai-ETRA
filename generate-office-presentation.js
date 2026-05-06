@@ -3,477 +3,363 @@ const PptxGenJS = require("pptxgenjs");
 const pptx = new PptxGenJS();
 pptx.layout = "LAYOUT_WIDE";
 pptx.author = "Ahmed";
-pptx.company = "NLP Learning Track";
-pptx.subject = "Introduction to Natural Language Processing";
-pptx.title = "Day 1 - NLP Introduction";
+pptx.title = "Empty Presentation";
 pptx.lang = "en-US";
 
-const COLORS = {
-  bg: "F3EEFF",
-  primary: "2C3E50",
-  secondary: "5234B7",
-  dark: "1C2833",
-  muted: "7F8C8D",
-  white: "FFFFFF",
-  accent: "9E59CD",
-  warm: "E67E22",
-  border: "BDC3C7",
-};
+const slide = pptx.addSlide();
+slide.background = { color: "FFFFFF" };
+slide.addText("Day 1 - Introduction to Natural Language Processing (NLP)", {
+  x: 0.8,
+  y: 2.8,
+  w: 11.8,
+  h: 0.8,
+  align: "center",
+  fontSize: 34,
+  bold: true,
+  color: "1F2937",
+});
 
-function addHeader(slide, title, subtitle) {
-  slide.background = { color: COLORS.bg };
-  slide.addShape(pptx.ShapeType.rect, {
-    x: 0,
-    y: 0,
-    w: 13.33,
-    h: 0.9,
-    fill: { color: COLORS.primary },
-    line: { color: COLORS.primary },
+const slide2 = pptx.addSlide();
+slide2.background = { color: "FFFFFF" };
+slide2.addText("1. What Is NLP and Why Is It Hard?", {
+  x: 0.7,
+  y: 0.6,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 28,
+  bold: true,
+  color: "1F2937",
+});
+slide2.addText("1.1 Definition", {
+  x: 0.8,
+  y: 1.4,
+  w: 4.0,
+  h: 0.4,
+  fontSize: 20,
+  bold: true,
+  color: "374151",
+});
+slide2.addText(
+  "Natural Language Processing (NLP) is a subfield of Artificial Intelligence focused on enabling computers to understand, generate, and interact with human language.",
+  {
+    x: 0.8,
+    y: 2.0,
+    w: 11.7,
+    h: 1.0,
+    fontSize: 16,
+    color: "111827",
+    valign: "top",
+  }
+);
+
+const slide3 = pptx.addSlide();
+slide3.background = { color: "FFFFFF" };
+slide3.addText("1.2 Why Is Language Hard for Computers?", {
+  x: 0.7,
+  y: 0.6,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 28,
+  bold: true,
+  color: "1F2937",
+});
+slide3.addText("Ambiguity is the biggest challenge in NLP.", {
+  x: 0.8,
+  y: 1.35,
+  w: 11.8,
+  h: 0.4,
+  fontSize: 17,
+  bold: true,
+  color: "374151",
+});
+slide3.addShape(pptx.ShapeType.roundRect, {
+  x: 0.8,
+  y: 1.85,
+  w: 11.8,
+  h: 1.5,
+  radius: 0.05,
+  fill: { color: "F9FAFB" },
+  line: { color: "D1D5DB" },
+});
+slide3.addText(
+  "Sentence: \"I saw the man with the telescope\"\nInterpretation 1: I used a telescope to see the man.\nInterpretation 2: I saw a man who was carrying a telescope.",
+  {
+    x: 1.1,
+    y: 2.08,
+    w: 11.1,
+    h: 1.1,
+    fontSize: 14,
+    color: "111827",
+    valign: "top",
+  }
+);
+slide3.addText("Types of Ambiguity", {
+  x: 0.8,
+  y: 3.65,
+  w: 4.0,
+  h: 0.35,
+  fontSize: 18,
+  bold: true,
+  color: "1F2937",
+});
+slide3.addShape(pptx.ShapeType.roundRect, {
+  x: 0.8,
+  y: 4.1,
+  w: 11.8,
+  h: 2.8,
+  radius: 0.05,
+  fill: { color: "FFFFFF" },
+  line: { color: "D1D5DB" },
+});
+slide3.addText("Lexical Ambiguity", {
+  x: 1.0, y: 4.35, w: 3.0, h: 0.25, fontSize: 13, bold: true, color: "1F2937"
+});
+slide3.addText("Example: \"bank\"", {
+  x: 3.5, y: 4.35, w: 2.5, h: 0.25, fontSize: 13, color: "374151"
+});
+slide3.addText("Interpretation: financial bank or river bank?", {
+  x: 6.0, y: 4.35, w: 6.2, h: 0.25, fontSize: 13, color: "374151"
+});
+
+slide3.addText("Syntactic Ambiguity", {
+  x: 1.0, y: 4.95, w: 3.0, h: 0.25, fontSize: 13, bold: true, color: "1F2937"
+});
+slide3.addText("Example: \"I saw the child by the window\"", {
+  x: 3.5, y: 4.95, w: 2.5, h: 0.25, fontSize: 13, color: "374151"
+});
+slide3.addText("Interpretation: who exactly was by the window?", {
+  x: 6.0, y: 4.95, w: 6.2, h: 0.25, fontSize: 13, color: "374151"
+});
+
+slide3.addText("Semantic Ambiguity", {
+  x: 1.0, y: 5.55, w: 3.0, h: 0.25, fontSize: 13, bold: true, color: "1F2937"
+});
+slide3.addText("Example: \"The mouse eats the cat\"", {
+  x: 3.5, y: 5.55, w: 2.5, h: 0.25, fontSize: 13, color: "374151"
+});
+slide3.addText("Interpretation: unusual meaning, who is eating whom?", {
+  x: 6.0, y: 5.55, w: 6.2, h: 0.25, fontSize: 13, color: "374151"
+});
+
+slide3.addText("Pragmatic Ambiguity", {
+  x: 1.0, y: 6.15, w: 3.0, h: 0.25, fontSize: 13, bold: true, color: "1F2937"
+});
+slide3.addText("Example: \"Can you open the door?\"", {
+  x: 3.5, y: 6.15, w: 2.5, h: 0.25, fontSize: 13, color: "374151"
+});
+slide3.addText("Interpretation: literal question or polite request?", {
+  x: 6.0, y: 6.15, w: 6.2, h: 0.25, fontSize: 13, color: "374151"
+});
+
+const slide4 = pptx.addSlide();
+slide4.background = { color: "FFFFFF" };
+slide4.addText("Other NLP Challenges", {
+  x: 0.7,
+  y: 0.7,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 30,
+  bold: true,
+  color: "1F2937",
+});
+slide4.addText("Beyond ambiguity, language has many complex signals:", {
+  x: 0.8,
+  y: 1.45,
+  w: 11.8,
+  h: 0.4,
+  fontSize: 16,
+  color: "374151",
+});
+
+slide4.addShape(pptx.ShapeType.roundRect, {
+  x: 0.9,
+  y: 2.0,
+  w: 11.7,
+  h: 4.8,
+  radius: 0.07,
+  fill: { color: "F9FAFB" },
+  line: { color: "D1D5DB" },
+});
+
+slide4.addText(
+  [
+    { text: "Sarcasm: ", options: { bold: true, color: "111827" } },
+    { text: "\"Great! We are late again.\" (meaning is opposite to the words)\n", options: { color: "374151" } },
+    { text: "Dialects: ", options: { bold: true, color: "111827" } },
+    { text: "\"Zain\" can mean \"good\" in Gulf Arabic, but it can also be a person name in Persian.\n", options: { color: "374151" } },
+    { text: "Abbreviations: ", options: { bold: true, color: "111827" } },
+    { text: "One short form can have multiple meanings depending on context.\n", options: { color: "374151" } },
+    { text: "Spelling Errors: ", options: { bold: true, color: "111827" } },
+    { text: "Small spelling mistakes can change meaning and reduce model accuracy.\n", options: { color: "374151" } },
+    { text: "Evolving Language: ", options: { bold: true, color: "111827" } },
+    { text: "Slang, proverbs, and idiomatic expressions constantly change usage.", options: { color: "374151" } },
+  ],
+  {
+    x: 1.2,
+    y: 2.35,
+    w: 11.0,
+    h: 4.0,
+    fontSize: 15,
+    breakLine: true,
+    valign: "top",
+  }
+);
+
+const slide5 = pptx.addSlide();
+slide5.background = { color: "FFFFFF" };
+slide5.addText("1.3 Real-World NLP Applications", {
+  x: 0.7,
+  y: 0.7,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 30,
+  bold: true,
+  color: "1F2937",
+});
+slide5.addText("Examples of NLP in products and industries:", {
+  x: 0.8,
+  y: 1.45,
+  w: 11.8,
+  h: 0.4,
+  fontSize: 16,
+  color: "374151",
+});
+slide5.addShape(pptx.ShapeType.roundRect, {
+  x: 0.9,
+  y: 2.0,
+  w: 11.7,
+  h: 4.9,
+  radius: 0.07,
+  fill: { color: "F9FAFB" },
+  line: { color: "D1D5DB" },
+});
+slide5.addText(
+  [
+    { text: "Google Search -> ", options: { bold: true, color: "111827" } },
+    { text: "Understanding user search intent\n", options: { color: "374151" } },
+    { text: "ChatGPT / Claude -> ", options: { bold: true, color: "111827" } },
+    { text: "Generating text and answers\n", options: { color: "374151" } },
+    { text: "Gmail -> ", options: { bold: true, color: "111827" } },
+    { text: "Spam filtering\n", options: { color: "374151" } },
+    { text: "Siri / Alexa -> ", options: { bold: true, color: "111827" } },
+    { text: "Speech recognition\n", options: { color: "374151" } },
+    { text: "Google Translate -> ", options: { bold: true, color: "111827" } },
+    { text: "Machine translation\n", options: { color: "374151" } },
+    { text: "Bloomberg -> ", options: { bold: true, color: "111827" } },
+    { text: "Financial market sentiment analysis\n", options: { color: "374151" } },
+    { text: "Hospitals -> ", options: { bold: true, color: "111827" } },
+    { text: "Extracting information from medical records\n", options: { color: "374151" } },
+    { text: "Twitter/X -> ", options: { bold: true, color: "111827" } },
+    { text: "Detecting fake news", options: { color: "374151" } },
+  ],
+  {
+    x: 1.2,
+    y: 2.35,
+    w: 11.0,
+    h: 4.2,
+    fontSize: 15,
+    breakLine: true,
+    valign: "top",
+  }
+);
+
+const slide6 = pptx.addSlide();
+slide6.background = { color: "FFFFFF" };
+slide6.addText("2. The Complete NLP Pipeline", {
+  x: 0.7,
+  y: 0.6,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 30,
+  bold: true,
+  color: "1F2937",
+});
+slide6.addText("The pipeline is a sequence of transformations that converts raw text into data a model can understand.", {
+  x: 0.8,
+  y: 1.3,
+  w: 12.0,
+  h: 0.5,
+  fontSize: 15,
+  color: "374151",
+});
+
+const pipelineSteps = [
+  "Raw Text",
+  "[1] Text Cleaning",
+  "[2] Tokenization",
+  "[3] Stop Words Removal",
+  "[4] Normalization",
+  "[5] Stemming / Lemmatization",
+  "[6] POS Tagging",
+  "[7] Named Entity Recognition (NER)",
+  "Model-Ready Structured Data",
+];
+
+pipelineSteps.forEach((step, idx) => {
+  const y = 1.95 + idx * 0.56;
+  const isEdge = idx === 0 || idx === pipelineSteps.length - 1;
+  slide6.addShape(pptx.ShapeType.roundRect, {
+    x: 3.0,
+    y,
+    w: 7.3,
+    h: 0.42,
+    radius: 0.05,
+    fill: { color: isEdge ? "EDE9FE" : "F9FAFB" },
+    line: { color: "D1D5DB" },
   });
-  slide.addText(title, {
-    x: 0.6,
-    y: 0.22,
-    w: 10.5,
-    h: 0.4,
-    color: COLORS.white,
-    fontSize: 20,
-    bold: true,
+  slide6.addText(step, {
+    x: 3.2,
+    y: y + 0.1,
+    w: 6.9,
+    h: 0.22,
+    align: "center",
+    fontSize: 12,
+    bold: isEdge,
+    color: "111827",
   });
-  if (subtitle) {
-    slide.addText(subtitle, {
-      x: 0.6,
-      y: 1.0,
-      w: 12.0,
-      h: 0.4,
-      color: COLORS.muted,
-      fontSize: 13,
+  if (idx < pipelineSteps.length - 1) {
+    slide6.addText("↓", {
+      x: 6.5,
+      y: y + 0.42,
+      w: 0.3,
+      h: 0.15,
+      align: "center",
+      fontSize: 12,
+      color: "6B7280",
     });
   }
-}
-
-function addFooter(slide, page) {
-  slide.addText(`NLP Day 1 | ${page}`, {
-    x: 0.6,
-    y: 7.15,
-    w: 12.0,
-    h: 0.3,
-    color: "9CA3AF",
-    fontSize: 10,
-    align: "right",
-  });
-}
-
-function bulletText(lines) {
-  return lines.map((line) => ({ text: line, options: { bullet: { indent: 14 } } }));
-}
-
-// Slide 1: Title
-{
-  const slide = pptx.addSlide();
-  slide.background = { color: COLORS.primary };
-  slide.addText("Day 1: Introduction to NLP", {
-    x: 0.8,
-    y: 2.0,
-    w: 11.8,
-    h: 0.8,
-    color: COLORS.white,
-    fontSize: 40,
-    bold: true,
-    align: "center",
-  });
-  slide.addText("Theory and practical examples (no coding)", {
-    x: 1.3,
-    y: 3.1,
-    w: 10.8,
-    h: 0.5,
-    color: "DBEAFE",
-    fontSize: 18,
-    align: "center",
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 4.9,
-    y: 4.2,
-    w: 3.5,
-    h: 0.7,
-    radius: 0.08,
-    fill: { color: COLORS.accent },
-    line: { color: COLORS.accent },
-  });
-  slide.addText("Beginner -> Intermediate", {
-    x: 4.9,
-    y: 4.42,
-    w: 3.5,
-    h: 0.26,
-    align: "center",
-    color: COLORS.white,
-    bold: true,
-    fontSize: 14,
-  });
-}
-
-// Slide 2: What is NLP
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "What Is NLP and Why Is It Hard?", "Core concepts and challenges");
-  slide.addText("Natural Language Processing enables computers to understand and generate human language.", {
-    x: 0.8,
-    y: 1.6,
-    w: 12.0,
-    h: 0.7,
-    fontSize: 16,
-    color: COLORS.dark,
-  });
-  slide.addText(bulletText([
-    "Language includes meaning, context, intent, and emotion.",
-    "Ambiguity is the biggest challenge.",
-    "Humans resolve ambiguity quickly using context; machines need explicit modeling.",
-    "Common issues: sarcasm, idioms, misspellings, slang, negation, and coreference."
-  ]), {
-    x: 1.0,
-    y: 2.4,
-    w: 11.4,
-    h: 2.6,
-    fontSize: 15,
-    color: COLORS.dark,
-    breakLine: true,
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 0.9,
-    y: 5.4,
-    w: 11.8,
-    h: 1.3,
-    radius: 0.06,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addText("Example ambiguity: \"I saw the man with the telescope\" can mean either you used a telescope, or the man had one.", {
-    x: 1.2,
-    y: 5.75,
+});
+slide2.addText("Human language is not just data - it carries:", {
+  x: 0.8,
+  y: 3.25,
+  w: 8.0,
+  h: 0.4,
+  fontSize: 16,
+  bold: true,
+  color: "1F2937",
+});
+slide2.addText(
+  [
+    { text: "Semantics: ", options: { bold: true } },
+    { text: "What does the word mean?" },
+    { text: "\nContext: ", options: { bold: true } },
+    { text: "What does the word mean here?" },
+    { text: "\nIntent: ", options: { bold: true } },
+    { text: "What does the speaker want?" },
+    { text: "\nSentiment: ", options: { bold: true } },
+    { text: "How does the speaker feel?" },
+  ],
+  {
+    x: 1.1,
+    y: 3.8,
     w: 11.2,
-    h: 0.7,
-    fontSize: 14,
-    italic: true,
-    color: COLORS.secondary,
-  });
-  addFooter(slide, 2);
-}
-
-// Slide 3: NLP applications
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "Real-World NLP Applications", "Where NLP appears in daily products");
-  slide.addText(bulletText([
-    "Search engines: understanding user intent behind queries.",
-    "Virtual assistants: speech recognition and command interpretation.",
-    "Machine translation: converting meaning across languages.",
-    "Email systems: spam filtering and smart reply generation.",
-    "Healthcare and finance: extracting structured insights from documents.",
-    "Social media moderation: detecting hate speech, abuse, and misinformation."
-  ]), {
-    x: 0.9,
-    y: 1.6,
-    w: 12.0,
-    h: 4.8,
-    fontSize: 16,
-    color: COLORS.dark,
-    breakLine: true,
-  });
-  addFooter(slide, 3);
-}
-
-// Slide 4: Full pipeline
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "The Full NLP Pipeline", "From raw text to structured data");
-  const steps = [
-    "1) Text Cleaning",
-    "2) Tokenization",
-    "3) Stop Words Handling",
-    "4) Normalization",
-    "5) Stemming or Lemmatization",
-    "6) POS Tagging",
-    "7) Named Entity Recognition",
-  ];
-  steps.forEach((step, idx) => {
-    const y = 1.7 + idx * 0.74;
-    slide.addShape(pptx.ShapeType.roundRect, {
-      x: 1.0,
-      y,
-      w: 5.0,
-      h: 0.55,
-      radius: 0.06,
-      fill: { color: idx % 2 === 0 ? "FFFFFF" : "F8FAFC" },
-      line: { color: COLORS.border },
-    });
-    slide.addText(step, {
-      x: 1.2,
-      y: y + 0.15,
-      w: 4.6,
-      h: 0.25,
-      fontSize: 13,
-      bold: true,
-      color: COLORS.primary,
-    });
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 6.4,
-    y: 1.8,
-    w: 5.8,
-    h: 4.6,
-    radius: 0.08,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addText("Example Flow", {
-    x: 6.7,
-    y: 2.05,
-    w: 5.2,
-    h: 0.3,
-    bold: true,
-    color: COLORS.secondary,
-    fontSize: 15,
-  });
-  slide.addText("Input: \"Apple CEO Tim Cook said iPhone sales rose 20% last quarter.\"\nOutput: entities, key terms, grammatical roles, and normalized tokens ready for analysis.", {
-    x: 6.7,
-    y: 2.45,
-    w: 5.1,
-    h: 2.3,
-    fontSize: 13,
-    color: COLORS.dark,
-    valign: "top",
-  });
-  addFooter(slide, 4);
-}
-
-// Slide 5: Tokenization and stop words
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "Tokenization and Stop Words", "How text is split and filtered");
-  slide.addText("Tokenization types:", {
-    x: 0.9,
-    y: 1.6,
-    w: 4.5,
-    h: 0.3,
-    bold: true,
-    fontSize: 15,
-    color: COLORS.primary,
-  });
-  slide.addText(bulletText([
-    "Word tokens: split by words and punctuation.",
-    "Character tokens: every character as a token.",
-    "Subword tokens: best for LLMs and unseen words.",
-    "Sentence tokens: split by sentence boundaries."
-  ]), {
-    x: 1.0,
-    y: 2.0,
-    w: 5.7,
-    h: 2.6,
-    fontSize: 13,
-    color: COLORS.dark,
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 6.8,
-    y: 1.6,
-    w: 5.6,
-    h: 3.1,
-    radius: 0.06,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addText("Example", {
-    x: 7.1,
-    y: 1.9,
-    w: 1.8,
-    h: 0.3,
-    bold: true,
-    color: COLORS.secondary,
-    fontSize: 14,
-  });
-  slide.addText("Sentence: \"This is the book that talks about artificial intelligence\"\nAfter stop-word reduction: \"book talks artificial intelligence\"", {
-    x: 7.1,
-    y: 2.3,
-    w: 5.0,
-    h: 1.9,
-    fontSize: 13,
-    color: COLORS.dark,
-  });
-  slide.addText("Important: Do not remove stop words in tasks where meaning of words like \"not\" is critical.", {
-    x: 1.0,
-    y: 5.3,
-    w: 11.6,
-    h: 0.9,
-    fontSize: 14,
-    color: COLORS.warm,
-    italic: true,
-  });
-  addFooter(slide, 5);
-}
-
-// Slide 6: Stemming vs Lemmatization
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "Stemming vs Lemmatization", "Speed versus linguistic accuracy");
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 0.9,
-    y: 1.6,
-    w: 5.8,
-    h: 3.8,
-    radius: 0.08,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 6.7,
-    y: 1.6,
-    w: 5.8,
-    h: 3.8,
-    radius: 0.08,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addText("Stemming", {
-    x: 1.2,
-    y: 1.95,
-    w: 2.2,
-    h: 0.3,
-    fontSize: 16,
-    bold: true,
-    color: COLORS.primary,
-  });
-  slide.addText(bulletText([
-    "Rule-based truncation.",
-    "Very fast.",
-    "May output non-real words.",
-    "Best for large-scale indexing."
-  ]), {
-    x: 1.2,
-    y: 2.35,
-    w: 5.0,
-    h: 2.6,
-    fontSize: 13,
-    color: COLORS.dark,
-  });
-  slide.addText("Lemmatization", {
-    x: 7.0,
-    y: 1.95,
-    w: 3.2,
-    h: 0.3,
-    fontSize: 16,
-    bold: true,
-    color: COLORS.secondary,
-  });
-  slide.addText(bulletText([
-    "Dictionary and grammar aware.",
-    "More accurate, slightly slower.",
-    "Outputs valid base forms.",
-    "Best for chatbots and QA tasks."
-  ]), {
-    x: 7.0,
-    y: 2.35,
-    w: 5.0,
-    h: 2.6,
-    fontSize: 13,
-    color: COLORS.dark,
-  });
-  slide.addText("Examples: studies -> study, mice -> mouse, better -> good", {
-    x: 1.0,
-    y: 5.8,
-    w: 11.6,
-    h: 0.5,
-    fontSize: 14,
-    italic: true,
-    color: COLORS.warm,
-  });
-  addFooter(slide, 6);
-}
-
-// Slide 7: POS and NER
-{
-  const slide = pptx.addSlide();
-  addHeader(slide, "POS Tagging and Named Entity Recognition", "Understanding grammar and extracting facts");
-  slide.addText("POS Tagging labels each word by grammatical role (NOUN, VERB, ADJ, etc.).", {
-    x: 0.9,
-    y: 1.7,
-    w: 11.8,
-    h: 0.45,
-    fontSize: 14,
-    color: COLORS.dark,
-  });
-  slide.addText("NER identifies entities like PERSON, ORG, DATE, MONEY, and LOCATION.", {
-    x: 0.9,
-    y: 2.2,
-    w: 11.8,
-    h: 0.45,
-    fontSize: 14,
-    color: COLORS.dark,
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 0.9,
-    y: 2.9,
-    w: 11.8,
-    h: 2.7,
-    radius: 0.08,
-    fill: { color: "FFFFFF" },
-    line: { color: COLORS.border },
-  });
-  slide.addText("Example sentence: \"Apple CEO Tim Cook announced a $430 billion investment in the United States.\"\n\nPossible extracted entities:\n- ORG: Apple\n- PERSON: Tim Cook\n- MONEY: $430 billion\n- GPE: United States", {
-    x: 1.2,
-    y: 3.2,
-    w: 11.1,
     h: 2.2,
-    fontSize: 13,
-    color: COLORS.secondary,
-  });
-  addFooter(slide, 7);
-}
-
-// Slide 8: Wrap-up
-{
-  const slide = pptx.addSlide();
-  slide.background = { color: COLORS.bg };
-  slide.addText("Day 1 Summary", {
-    x: 0.8,
-    y: 1.3,
-    w: 11.8,
-    h: 0.8,
-    align: "center",
-    fontSize: 38,
-    bold: true,
-    color: COLORS.primary,
-  });
-  slide.addText(bulletText([
-    "NLP is about converting language into structured, machine-usable information.",
-    "The pipeline starts with cleaning and ends with rich linguistic features.",
-    "Tokenization, lemmatization, POS, and NER are foundational building blocks.",
-    "Choosing the right preprocessing depends on the target task and quality needs."
-  ]), {
-    x: 1.2,
-    y: 2.4,
-    w: 10.9,
-    h: 2.6,
-    fontSize: 16,
-    color: COLORS.dark,
-  });
-  slide.addShape(pptx.ShapeType.roundRect, {
-    x: 4.6,
-    y: 5.5,
-    w: 4.1,
-    h: 0.75,
-    radius: 0.09,
-    fill: { color: COLORS.warm },
-    line: { color: COLORS.warm },
-  });
-  slide.addText("Next: Text Representations", {
-    x: 4.6,
-    y: 5.75,
-    w: 4.1,
-    h: 0.3,
-    align: "center",
-    fontSize: 14,
-    bold: true,
-    color: COLORS.white,
-  });
-}
+    fontSize: 15,
+    color: "111827",
+    breakLine: true,
+    valign: "top",
+  }
+);
 
 pptx
   .writeFile({ fileName: "Office-Presentation-English.pptx" })
